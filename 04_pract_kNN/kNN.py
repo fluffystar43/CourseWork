@@ -13,8 +13,8 @@ def k_nearest(X, k, obj):
     obj = new[16]
     distance = [dist(i, obj) for i in sub_X]
     sorting = np.argsort(distance)
-    sorting = sorting[0:k]
-    nearest_classes = X[[sorting], -1]
+    sortingMas = sorting[0:k]
+    nearest_classes = X[[sortingMas], -1]
     unique, counts = np.unique(nearest_classes, return_counts = True)
     object_class = unique[np.argmax(counts)]
     return object_class
