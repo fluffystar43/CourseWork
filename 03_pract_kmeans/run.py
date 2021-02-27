@@ -15,6 +15,7 @@ X = np.array([
   [5, 4],
   [2, 2]])
 ans = kmeans(2, X)
+print("Центры:")
 print(ans)
 plt.plot(X[:,0], X[:,1], 'bx', ans[:,0], ans[:,1], 'r*', markersize=20)
 plt.grid()
