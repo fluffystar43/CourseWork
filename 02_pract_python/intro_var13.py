@@ -3,7 +3,7 @@ import math
 #Вариант 13
 #Задание 1
 def massAbsDiff(x, y):
-    if((type(x) is list) & (type(y) is list) & (len(x) == len(y))):
+    if(type(x) is list and type(y) is list and len(x) == len(y)):
         return [abs(x[i] - y[i]) for i in range(len(x))]
     else:
         raise Exception("x и y - не являются массивами или их размерности не совпадают!")
