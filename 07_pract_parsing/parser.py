@@ -26,7 +26,7 @@ for node in doc.select('div.comment-wrap'):
     comments.append({'text': text, 'author': author})
     
 # Вывод информации по комментариям
-print('Комментариев в статье: ', len(comments))
+print('Комментариев в статье:', len(comments))
 print('Самый маленький комментарий:', sorted(comments, key=lambda x: len(x['text']))[0]['text'])
 
 # Самый активный комментатор
