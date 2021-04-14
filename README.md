@@ -1,2 +1,4 @@
-# CourseWork
-Rent and Repair Cars
+Участники работы: 
+
+Шихалеев Артём Владимирович – fluffystar43
+Феденков Илья Сергеевич – REPIRAS
