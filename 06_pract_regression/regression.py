@@ -30,30 +30,22 @@ plt.show()
 
 # Вариант 3. Исследовать различные варианты полиномов: второй, третьей, четвёртой, пятой степеней.
 # Для каждого из вариантов построить кривую регрессии и отобразить на одном графике вместе с реальными значениями. 
-X2 = np.array([x, x**2.0]).transpose()
-X3 = np.array([x, x**2.0, x**3.0]).transpose()
-X4 = np.array([x, x**2.0, x**3.0, x**4.0]).transpose()
+def predictionFunction(x, degree):
+     list = []
+     [list.insert(i, x**float(i)) for i in range(1, degree+1)]
+     X = np.array(list).transpose()
+     lm.fit(X, y)
+     return lm.predict(X)
 
-lm.fit(X2, y)
-predicted = lm.predict(X2)
-plt.plot(y, 'b-')
-plt.plot(predicted, 'r-')
-plt.grid()
-plt.show()
+def predictionGraph(x, degrees):
+    plt.plot(y, 'b-')
+    for i in range(degrees):
+        prediction = predictionFunction(x, i + 1)
+        plt.plot(prediction, 'r-')
+    plt.grid()
+    plt.show()
 
-lm.fit(X3, y)
-predicted = lm.predict(X3)
-plt.plot(y, 'b-')
-plt.plot(predicted, 'r-')
-plt.grid()
-plt.show()
-
-lm.fit(X4, y)
-predicted = lm.predict(X4)
-plt.plot(y, 'b-')
-plt.plot(predicted, 'r-')
-plt.grid()
-plt.show()
+prediction = predictionGraph(x, 5)
 
 # Вычисление разностей рельных и вычисленных по формуле оттенков
 diff = y - predicted
