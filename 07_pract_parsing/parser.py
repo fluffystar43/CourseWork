@@ -1,7 +1,13 @@
 from bs4 import BeautifulSoup as bs
 import codecs
+import requests
 
 # https://javarush.ru/groups/posts/2560-vvedenie-v-java-fx
+url = input('Введите URL сайта: ')
+file = open('article.html', "wb")
+url = requests.get(url)
+file.write(url.content)
+#file.close()
 doc = bs(codecs.open('article.html', encoding='utf-8', mode='r').read(), 'html.parser')
 
 # Извлечение данных из статьи
