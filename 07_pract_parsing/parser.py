@@ -7,7 +7,7 @@ url = input('Введите URL сайта: ')
 file = open('article.html', "wb")
 url = requests.get(url)
 file.write(url.content)
-#file.close()
+file.close()
 doc = bs(codecs.open('article.html', encoding='utf-8', mode='r').read(), 'html.parser')
 
 # Извлечение данных из статьи
