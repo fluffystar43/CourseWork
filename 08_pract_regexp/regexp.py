@@ -2,10 +2,9 @@
 import re
 
 def regex(massData, regPattern):
-    for i in massData:
-        result = re.search(regPattern, i)
-        if result != None: print(i, 'Подходит')
-        else: print(i, 'Не подходит')
+    for testSample in massData:
+        result = re.search(regPattern, testSample)
+        print(testSample, 'Подходит' if result else 'Не подходит')
     print()
     
 # =============================================================================
@@ -28,7 +27,7 @@ regex(massIp, regPattern)
 # =============================================================================
 massDate = ['12.03.2016', '02.05.1928', '12/03/2016', '12-03-2016', '2016.03.12', 
         '2016 03 12', '5.3.2016']
-regPattern = r'(0[1-9]|[12][0-9]|3[01])[.](0[1-9]|1[012])[.]((19|20)\d\d)'
+regPattern = r'(0[1-9]|[12][0-9]|3[01])\.(0[1-9]|1[012])\.(\d\d\d\d)'
 regex(massDate, regPattern)
 
 # =============================================================================
@@ -39,5 +38,5 @@ regex(massDate, regPattern)
 # =============================================================================
 massFiles = ['test.png', 'test.jpeg', 'test.jpg', 'test.gif', 'test.php', 
         'test.exe', '~!@$%.png', '<?php test.png ?>']
-regPattern = r'^[a-z]+\.(png|jpg|jpeg|gif)$'
+regPattern = r'^[A-Za-z]+\.(png|jpg|jpeg|gif)$'
 regex(massFiles, regPattern)
