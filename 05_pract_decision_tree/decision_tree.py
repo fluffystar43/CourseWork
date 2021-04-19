@@ -28,13 +28,10 @@ def decision_tree(X, Y, scale, level=0):
 
         if scale[i] == CATEGORICAL:   # категориальный признак      
             info_s = 0
-            m = len(np.unique(X[:,i]))
-            k = np.unique(X[:,i])
-            T = len(Y)
-            for j in range(m):
-                T_i = list(Y).count(Y[j])
-                info_s += T_i/T * Info(Y[X[:, i] == k[j]]) 
-            gain.append(info - info_s)
+            values, counts = np.unique(X[:,i], return_counts=True)
+            for j in range(len(np.unique(X[:,i]))):
+                info_s += (counts[j]/m) * Info(Y[X[:, i] == values[j]])
+                gain.append(info - info_s)
         else:  
             # непрерывный признак
             # сортируем столбец по возрастанию
@@ -98,11 +95,10 @@ def decision_tree(X, Y, scale, level=0):
         
 # вычисление энтропии множества set
 def Info(set):
-    m = len(set)
     info = 0
-    n = len(np.unique(set))  
-    for i in range(n):
-        p_i = list(set).count(set[i])/m
+    values, counts = np.unique(set, return_counts=True)
+    for i in range(len(np.unique(set))):
+        p_i = counts[i]/len(set)
         if p_i != 0:           
             info += (p_i*np.log2(p_i))
     return -info
