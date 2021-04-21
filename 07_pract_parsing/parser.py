@@ -4,11 +4,10 @@ import requests
 
 # https://javarush.ru/groups/posts/2560-vvedenie-v-java-fx
 url = input('Введите URL сайта: ')
-file = open('article.html', "wb")
 url = requests.get(url)
-file.write(url.content)
-file.close()
-doc = bs(codecs.open('article.html', encoding='utf-8', mode='r').read(), 'html.parser')
+url.encoding = 'utf-8'
+doc = bs(url.text, 'lxml')
+#doc = bs(codecs.open('article.html', encoding='utf-8', mode='r').read(), 'html.parser')
 
 # Извлечение данных из статьи
 title = doc.select('h1.post-head__title')[0].decode_contents().strip()
