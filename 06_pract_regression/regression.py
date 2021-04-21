@@ -30,22 +30,24 @@ plt.show()
 
 # Вариант 3. Исследовать различные варианты полиномов: второй, третьей, четвёртой, пятой степеней.
 # Для каждого из вариантов построить кривую регрессии и отобразить на одном графике вместе с реальными значениями. 
-def predictionFunction(x, degree):
-     list = []
-     [list.insert(i, x**float(i)) for i in range(1, degree+1)]
-     X = np.array(list).transpose()
+def predictionFunction(x, degree, y):
+     X = np.array([x**float(power) for power in range(degree + 1)]).T
      lm.fit(X, y)
      return lm.predict(X)
 
-def predictionGraph(x, degrees):
+def predictionGraph(x, degrees, y):
     plt.plot(y, 'b-')
     for i in range(degrees):
-        prediction = predictionFunction(x, i + 1)
+        prediction = predictionFunction(x, i + 1, y)
         plt.plot(prediction, 'r-')
+    plt.title('Описание строки изображения с помощью полинома') 
+    plt.xlabel('Количество точек изображения')  
+    plt.ylabel('Количество оттенков синего цвета')
+    plt.legend(['Синий цветовой канал','Полиномы'], loc=4)
     plt.grid()
     plt.show()
 
-prediction = predictionGraph(x, 5)
+prediction = predictionGraph(x, 5, y)
 
 # Вычисление разностей рельных и вычисленных по формуле оттенков
 diff = y - predicted
