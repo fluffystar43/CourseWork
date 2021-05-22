@@ -35,16 +35,11 @@ class MainWindow(QMainWindow):
         try:
             x = float(self.textEditFirst.toPlainText())
             y = float(self.textEditSecond.toPlainText())
-            if (Enum == 1):
-                self.textEditResult.setText(str(x+y))
-            elif (Enum == 2):
-                self.textEditResult.setText(str(x-y))
-            elif (Enum == 3):
-                self.textEditResult.setText(str(x*y))
-            elif (Enum == 4):
-                self.textEditResult.setText(str(x/y))
-            elif (Enum == 5):
-                self.textEditResult.setText(str(x**y))
+            if (Enum == 1): self.textEditResult.setText(str(x+y))
+            elif (Enum == 2): self.textEditResult.setText(str(x-y))
+            elif (Enum == 3): self.textEditResult.setText(str(x*y))
+            elif (Enum == 4): self.textEditResult.setText(str(x/y))
+            elif (Enum == 5): self.textEditResult.setText(str(x**y))
         except:
             QMessageBox.information(self, 'Ошибка', 'Неверные данные')
             
