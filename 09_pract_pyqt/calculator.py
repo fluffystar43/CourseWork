@@ -18,11 +18,11 @@ class MainWindow(QMainWindow):
         
     def initUI(self):
         self.center()
-        self.pbPlus.clicked.connect(lambda: self.calculate(Operation.plus.value))
-        self.pbMinus.clicked.connect(lambda: self.calculate(Operation.minus.value))
-        self.pbMulti.clicked.connect(lambda: self.calculate(Operation.mul.value))
-        self.pbDiv.clicked.connect(lambda: self.calculate(Operation.div.value))
-        self.pbExponentation.clicked.connect(lambda: self.calculate(Operation.power.value))
+        self.pbPlus.clicked.connect(lambda: self.calculate(Operation.plus))
+        self.pbMinus.clicked.connect(lambda: self.calculate(Operation.minus))
+        self.pbMulti.clicked.connect(lambda: self.calculate(Operation.mul))
+        self.pbDiv.clicked.connect(lambda: self.calculate(Operation.div))
+        self.pbExponentation.clicked.connect(lambda: self.calculate(Operation.power))
         self.show()
     
     def center(self):
@@ -31,15 +31,16 @@ class MainWindow(QMainWindow):
         qr.moveCenter(cp)
         self.move(qr.topLeft())        
     
-    def calculate(self, Enum):
+    def calculate(self, operation):
         try:
             x = float(self.textEditFirst.toPlainText())
             y = float(self.textEditSecond.toPlainText())
-            if (Enum == 1): self.textEditResult.setText(str(x+y))
-            elif (Enum == 2): self.textEditResult.setText(str(x-y))
-            elif (Enum == 3): self.textEditResult.setText(str(x*y))
-            elif (Enum == 4): self.textEditResult.setText(str(x/y))
-            elif (Enum == 5): self.textEditResult.setText(str(x**y))
+            if (operation == Operation.plus): result = (str(x+y))
+            elif (operation == Operation.minus): result = (str(x-y))
+            elif (operation == Operation.mul): result = (str(x*y))
+            elif (operation == Operation.div): result = (str(x/y))
+            elif (operation == Operation.power): result = (str(x**y))
+            self.textEditResult.setText(result)
         except:
             QMessageBox.information(self, 'Ошибка', 'Неверные данные')
             
